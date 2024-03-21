@@ -1,0 +1,10 @@
+@mixin txt($font-size: 16px, $font-weight: 400, $color: rgba(0,0,0,.85)) {
+  font-family: 'Roboto', 'sans-serif';
+
+  font-size: $font-size;
+  font-weight: $font-weight;
+  color: $color;
+  line-height: 1.5;
+
+  transition: color 300ms;
+}

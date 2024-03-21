@@ -1,0 +1,11 @@
+@mixin container($x: 0, $y: 40px) {
+  padding: $x $y;
+}
+
+@mixin base-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+}
