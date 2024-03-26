@@ -1,3 +1,5 @@
+import type { ISearchInput } from "~/widgets/search/types";
+
 export interface IProps {
   section: "projects" | "live-inventories" | "marketplace" | "news";
 }
@@ -10,6 +12,7 @@ interface IActionBtn {
 
 export interface IPageHeader {
   title: string;
+  search: Array<ISearchInput>;
   benefits: Array<string>;
   actions: Array<IActionBtn>;
 }
