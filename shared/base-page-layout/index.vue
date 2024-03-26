@@ -8,6 +8,8 @@
           {{ pageHeader.title }}
         </h1>
 
+        <WidgetSearch :inputs="pageHeader.search" />
+
         <div class="base-page-layout__header__content__benefits">
           <div
             v-for="(benefit, benefitIdx) in pageHeader.benefits"
@@ -73,7 +75,7 @@ const pageHeader = computed(() => pageHeaders[props.section]);
       &__title {
         @include txt($font-size: 48px, $font-weight: 700);
 
-        margin-bottom: 24px;
+        margin-bottom: 20px;
       }
 
       &__benefits {
