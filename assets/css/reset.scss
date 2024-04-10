@@ -64,3 +64,9 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
+
+.btn__orange {
+  background-color: $orange;
+  color: $white !important;
+  padding: 20px 0;
+}
