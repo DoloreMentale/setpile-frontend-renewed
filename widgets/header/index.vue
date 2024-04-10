@@ -1,7 +1,7 @@
 <template>
-  <div class="header">
-    <NuxtLink to="/">
-      <img class="header__logo" src="/logo.svg" alt="logo" />
+  <div class="header" :style="{ backgroundColor: isHomePage ? blueColor : whiteColor }">
+    <NuxtLink :to="isHomePage ? '/dashboard' : '/'">
+      <img class="header__logo" :src="isHomePage ? '/logo-white.svg' : '/logo.svg'" alt="logo" />
     </NuxtLink>
 
     <div class="header__content">
@@ -11,6 +11,7 @@
         :class="[
           'header__content__item',
           { 'header__content__item--active': isActive(headerItem.link) },
+          { 'header__content__item--white': isHomePage }
         ]"
         :to="headerItem.link"
       >
@@ -19,10 +20,11 @@
     </div>
 
     <div class="header__actions">
-      <AButton type="text" class="header__actions__login">Log In</AButton>
-
-      <AButton class="header__actions__signup">Sign up for free</AButton>
+      <AButton @click="openModal" type="text" :class="['header__actions__login', { 'header__actions__login--white': isHomePage }]">Log In</AButton>
+      <AButton @click="openSignInModal" class="header__actions__signup">Sign up for free</AButton>
     </div>
+    <WidgetLogIn :modalVisible="modalVisible" @close="closeModal" />
+    <WidgetRegistr :signInModalVisible="signInModalVisible" @sign-in-close="closeSignInModal" />
   </div>
 </template>
 
@@ -30,6 +32,30 @@
 import { headerItemsData } from "~/widgets/header/data";
 
 const headerItems = ref(headerItemsData);
+
+const isHomePage = computed(() => useRoute().path === '/');
+
+const blueColor = '#1890ff';
+const whiteColor = '#FFFFFF';
+
+const modalVisible = ref(false);
+const signInModalVisible = ref(false);
+
+const openModal = () => {
+  modalVisible.value = true;
+};
+
+const openSignInModal = () => {
+  signInModalVisible.value = true;
+};
+
+const closeModal = () => {
+  modalVisible.value = false;
+};
+
+const closeSignInModal = () => {
+  signInModalVisible.value = false;
+};
 
 const isActive = (link: string): boolean => link === useRoute().matched[0].path;
 </script>
@@ -42,7 +68,6 @@ const isActive = (link: string): boolean => link === useRoute().matched[0].path;
   display: flex;
   align-items: center;
 
-  background-color: $white;
   box-shadow: 0 0.2rem 0.8rem #f0f1f2;
 
   &__logo {
@@ -68,6 +93,10 @@ const isActive = (link: string): boolean => link === useRoute().matched[0].path;
       &--active {
         @include txt($font-weight: 600);
       }
+
+      &--white {
+        color: $white;
+      }
     }
   }
 
@@ -79,6 +108,10 @@ const isActive = (link: string): boolean => link === useRoute().matched[0].path;
       @include txt($font-size: 14px, $color: $blue);
 
       margin-right: 16px;
+
+      &--white {
+        color: $white;
+      }
     }
 
     &__signup {
