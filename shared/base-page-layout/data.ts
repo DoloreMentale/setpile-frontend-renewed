@@ -3,6 +3,18 @@ import type { IPageHeader } from "~/shared/base-page-layout/types";
 export const pageHeaders: { [key: string]: IPageHeader } = {
   projects: {
     title: "Find local help or get side gig",
+    search: [
+      {
+        id: "search-value",
+        placeholder: "Title, skills, etc",
+        label: "What",
+      },
+      {
+        id: "search-location",
+        placeholder: "Location",
+        label: "Where",
+      },
+    ],
     benefits: [
       "Over 11 active projects",
       "Fast & easy communication with prospect partners",
@@ -15,6 +27,18 @@ export const pageHeaders: { [key: string]: IPageHeader } = {
   },
   "live-inventories": {
     title: "See what is currently available",
+    search: [
+      {
+        id: "search-value",
+        placeholder: "Title, description, specification",
+        label: "What",
+      },
+      {
+        id: "search-location",
+        placeholder: "Location",
+        label: "Where",
+      },
+    ],
     benefits: [
       "Real-time availability update",
       "Top solar distributors",
@@ -24,6 +48,18 @@ export const pageHeaders: { [key: string]: IPageHeader } = {
   },
   marketplace: {
     title: "Sell or Buy excess inventory",
+    search: [
+      {
+        id: "search-value",
+        placeholder: "Product",
+        label: "What",
+      },
+      {
+        id: "search-location",
+        placeholder: "Location",
+        label: "Where",
+      },
+    ],
     benefits: [
       "Real listings from real people",
       "Custom product search",
@@ -33,6 +69,13 @@ export const pageHeaders: { [key: string]: IPageHeader } = {
   },
   news: {
     title: "Read latest industry news",
+    search: [
+      {
+        id: "search-value",
+        placeholder: "Title",
+        label: "What",
+      },
+    ],
     benefits: [
       "Browse by topic and date",
       "Join discussions in the comments",
