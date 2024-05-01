@@ -1,1 +1,1 @@
-export { default as BasePageLayout } from "~/shared/base-page-layout/index.vue";
+export type { TSection } from "~/shared/types/index";
