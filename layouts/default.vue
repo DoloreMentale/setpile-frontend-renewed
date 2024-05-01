@@ -9,10 +9,10 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
+import { useRoute } from "vue-router";
 
 const route = useRoute();
-const hideFooter = route.path === '/';
+const hideFooter = route.path === "/";
 </script>
 
 <style scoped lang="scss">
@@ -23,10 +23,6 @@ main {
 }
 
 .main-footer {
-  margin-top: auto;
-  margin-bottom: 16px;
-  position: fixed;
-  bottom: 0;
   width: 100%;
 }
 </style>

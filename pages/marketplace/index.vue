@@ -1,5 +1,5 @@
 <template>
-  <SharedBasePageLayout section="marketplace"></SharedBasePageLayout>
+  <BasePageLayout section="marketplace" />
 </template>
 
 <script setup lang="ts"></script>

@@ -1,5 +1,5 @@
 <template>
-  <SharedBasePageLayout section="news"></SharedBasePageLayout>
+  <BasePageLayout section="news" />
 </template>
 
 <script setup lang="ts"></script>

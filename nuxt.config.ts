@@ -1,5 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      apiBase: "",
+    },
+  },
   devtools: { enabled: true },
   modules: [
     "@ant-design-vue/nuxt",
@@ -30,9 +35,9 @@ export default defineNuxtConfig({
       prefix: "Widget",
     },
     {
-      path: "shared",
+      path: "base",
       extensions: [".vue"],
-      prefix: "Shared",
+      prefix: "Base",
     },
   ],
 });

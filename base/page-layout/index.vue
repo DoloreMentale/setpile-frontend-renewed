@@ -5,14 +5,14 @@
 
       <div class="base-page-layout__header__content">
         <h1 class="base-page-layout__header__content__title">
-          {{ pageHeader.title }}
+          {{ section.title }}
         </h1>
 
-        <WidgetSearch :inputs="pageHeader.search" />
+        <WidgetSearch :inputs="section.search" />
 
         <div class="base-page-layout__header__content__benefits">
           <div
-            v-for="(benefit, benefitIdx) in pageHeader.benefits"
+            v-for="(benefit, benefitIdx) in section.benefits"
             :key="benefitIdx"
             class="base-page-layout__header__content__benefits__item"
           >
@@ -28,7 +28,7 @@
 
         <div class="base-page-layout__header__content__actions">
           <AButton
-            v-for="(action, actionIdx) in pageHeader.actions"
+            v-for="(action, actionIdx) in section.actions"
             :key="actionIdx"
             :type="action.type"
             class="base-page-layout__header__content__actions__item"
@@ -41,17 +41,35 @@
       <img class="base-page-layout__header__img" />
     </div>
 
-    <div class="base-page-layout__content"></div>
+    <BasePageContent
+      :section="props.section"
+      :items="posts?.data"
+      :meta="posts?.meta"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import type { IProps } from "~/shared/base-page-layout/types";
-import { pageHeaders } from "~/shared/base-page-layout/data";
+import type { IProps, ISection } from "~/base/page-layout/types";
+import { sectionsData } from "~/base/page-layout/data";
+import type { IProjectItem } from "~/widgets/section-items/projects-item/types";
+import type { TMeta } from "~/base/page-content/types";
 
 const props = defineProps<IProps>();
 
-const pageHeader = computed(() => pageHeaders[props.section]);
+const section = sectionsData[props.section] as ISection;
+
+const { data: posts } = await useAsyncData(
+  `${props.section}-data`,
+  () =>
+    useApiClient<{ data: Array<IProjectItem>; meta: TMeta }>(
+      section.initialReqUrl,
+      {
+        method: "get",
+      },
+    ),
+  { default: () => {} },
+);
 </script>
 
 <style scoped lang="scss">
@@ -115,12 +133,6 @@ const pageHeader = computed(() => pageHeaders[props.section]);
         }
       }
     }
-  }
-
-  &__content {
-    @include container($x: 56px);
-
-    background-color: $gray;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <SharedBasePageLayout section="live-inventories"></SharedBasePageLayout>
+  <BasePageLayout section="live-inventories" />
 </template>
 
 <script setup lang="ts"></script>

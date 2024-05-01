@@ -1,5 +1,5 @@
 <template>
-  <BasePageLayout section="projects" />
+  <div></div>
 </template>
 
 <script setup lang="ts"></script>
