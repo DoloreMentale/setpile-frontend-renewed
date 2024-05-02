@@ -1,5 +1,5 @@
 <template>
-  <AModal>
+  <AModal :footer="false">
     <slot />
   </AModal>
 </template>

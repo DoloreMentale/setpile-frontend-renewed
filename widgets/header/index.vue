@@ -4,7 +4,7 @@
     :style="{ backgroundColor: isHomePage ? blueColor : whiteColor }"
   >
     <NuxtLink :to="isHomePage ? '/dashboard' : '/'">
-      <img class="header__logo" :src="logo" alt="logo" />
+      <img class="header__logo" :src="isHomePage ? '/logo-white.svg' : '/logo.svg'" alt="logo" />
     </NuxtLink>
 
     <div class="header__content">

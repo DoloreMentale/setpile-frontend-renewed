@@ -1,5 +1,5 @@
 <template>
-  <AModal :footer="false" :open="forgotPassModalVisible" :confirm-loading="loading" @close="handleForgotPassClose">
+  <UIModal>
     <div v-if="formSended" class="user-card">
         <p class="forgot__title">Check your email</p>
         <p class="forgot__subtitle">We`ve sent you an email to <b>{{ email }}</b> <br>with instructions to reset your password.</p>
@@ -24,11 +24,13 @@
             </a-row>
         </form>
     </div>
-  </AModal>
+  </UIModal>
 </template>
 
 <script setup lang="ts">
-const { props } = defineProps<{
+import { ref } from "vue";
+
+const props = defineProps<{
   forgotPassModalVisible: boolean;
 }>();
 
