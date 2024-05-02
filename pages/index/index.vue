@@ -313,7 +313,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import date from "~/mixins/date.ts";
+import { useFutureDate } from "~/composables/use-future-date";
+
+const { futureDate } = useFutureDate();
 
 const scrollToProjects = () => {
   const projectsSection = document.getElementById("general__projects");
@@ -332,8 +334,6 @@ const handleScroll = () => {
     }
   });
 };
-
-const futureDate = date.methods.getFutureDate();
 
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);

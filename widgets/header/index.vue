@@ -4,7 +4,11 @@
     :style="{ backgroundColor: isHomePage ? blueColor : whiteColor }"
   >
     <NuxtLink :to="isHomePage ? '/dashboard' : '/'">
-      <img class="header__logo" :src="isHomePage ? '/logo-white.svg' : '/logo.svg'" alt="logo" />
+      <img
+        class="header__logo"
+        :src="isHomePage ? '/logo-white.svg' : '/logo.svg'"
+        alt="logo"
+      />
     </NuxtLink>
 
     <div class="header__content">
@@ -71,6 +75,8 @@ const isActive = (link: string): boolean => link === useRoute().matched[0].path;
   box-shadow: 0 0.2rem 0.8rem #f0f1f2;
 
   &__logo {
+    height: 16px;
+    width: 53px;
     margin-right: 16px;
   }
 

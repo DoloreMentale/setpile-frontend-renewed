@@ -1,6 +1,6 @@
-import type { IPageHeader } from "~/shared/base-page-layout/types";
+import type { ISection } from "~/base/page-layout/types";
 
-export const pageHeaders: { [key: string]: IPageHeader } = {
+export const sectionsData: { [key: string]: ISection } = {
   projects: {
     title: "Find local help or get side gig",
     search: [
@@ -24,6 +24,8 @@ export const pageHeaders: { [key: string]: IPageHeader } = {
       { text: "Post a project", type: "default", link: "" },
       { text: "Post a resume", type: "default", link: "" },
     ],
+    initialReqUrl:
+      "/v3/jobs?type=project&page=1&sort_field=created_at&per_page=20&sort_direction=desc&search_longitude=30.2618&search_latitude=59.8983",
   },
   "live-inventories": {
     title: "See what is currently available",
@@ -45,6 +47,8 @@ export const pageHeaders: { [key: string]: IPageHeader } = {
       "Over 1249 products",
     ],
     actions: [{ text: "Create free account", type: "primary", link: "" }],
+    initialReqUrl:
+      "/v3/products?page=1&sort_field=distance_from_user&per_page=20&sort_direction=desc&search_longitude=30.2618&search_latitude=59.8983",
   },
   marketplace: {
     title: "Sell or Buy excess inventory",
@@ -66,6 +70,8 @@ export const pageHeaders: { [key: string]: IPageHeader } = {
       "Exclusive deals",
     ],
     actions: [{ text: "Sell your products", type: "primary", link: "" }],
+    initialReqUrl:
+      "/v4/listings?page=1&sort_field=updated_at&per_page=20&sort_direction=desc&post_type=listing&search_longitude=30.2618&search_latitude=59.8983",
   },
   news: {
     title: "Read latest industry news",
@@ -82,5 +88,7 @@ export const pageHeaders: { [key: string]: IPageHeader } = {
       "Get weekly news digest",
     ],
     actions: [{ text: "Create free account", type: "primary", link: "" }],
+    initialReqUrl:
+      "/v3/news/posts?page=1&sort_direction=desc&sort_field=created_at",
   },
 };

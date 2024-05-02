@@ -30,4 +30,8 @@ main {
   width: 100%;
   background-color: $gray;
 }
+
+.main-footer {
+  width: 100%;
+}
 </style>
