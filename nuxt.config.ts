@@ -8,6 +8,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     "@ant-design-vue/nuxt",
+    "@pinia/nuxt",
     [
       "@nuxtjs/google-fonts",
       { families: { Roboto: { wght: [400, 600, 700] } } },
@@ -38,6 +39,11 @@ export default defineNuxtConfig({
       path: "base",
       extensions: [".vue"],
       prefix: "Base",
+    },
+    {
+      path: "ui",
+      extensions: [".vue"],
+      prefix: "UI",
     },
   ],
 });

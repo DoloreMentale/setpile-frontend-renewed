@@ -33,49 +33,33 @@
           'header__actions__login',
           { 'header__actions__login--white': isHomePage },
         ]"
-        @click="openModal"
-        >Log In</AButton
+        @click="setModalState('login', true)"
       >
-      <AButton class="header__actions__signup" @click="openSignInModal"
-        >Sign up for free</AButton
+        Log In
+      </AButton>
+
+      <AButton
+        class="header__actions__signup"
+        @click="setModalState('sign-up', true)"
       >
+        Sign up for free
+      </AButton>
     </div>
-    <WidgetLogIn :modal-visible="modalVisible" @close="closeModal" />
-    <WidgetRegistr
-      :sign-in-modal-visible="signInModalVisible"
-      @sign-in-close="closeSignInModal"
-    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { headerItemsData } from "~/widgets/header/data";
 
-const headerItems = ref(headerItemsData);
+const { setModalState } = useModals();
 
-const isHomePage = computed(() => useRoute().path === "/");
+const headerItems = ref(headerItemsData);
 
 const blueColor = "#1890ff";
 const whiteColor = "#FFFFFF";
 
-const modalVisible = ref(false);
-const signInModalVisible = ref(false);
-
-const openModal = () => {
-  modalVisible.value = true;
-};
-
-const openSignInModal = () => {
-  signInModalVisible.value = true;
-};
-
-const closeModal = () => {
-  modalVisible.value = false;
-};
-
-const closeSignInModal = () => {
-  signInModalVisible.value = false;
-};
+const isHomePage = computed(() => useRoute().path === "/");
+const logo = computed(() => (isHomePage ? "/logo-white.svg" : "/logo.svg"));
 
 const isActive = (link: string): boolean => link === useRoute().matched[0].path;
 </script>

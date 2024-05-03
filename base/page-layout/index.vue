@@ -47,12 +47,14 @@
       :meta="posts?.meta"
     />
   </div>
+  <!-- <a-pagination v-model:current="props.currentPage" :total="props.total" /> -->
 </template>
 
 <script setup lang="ts">
 import type { IProps, ISection } from "~/base/page-layout/types";
 import { sectionsData } from "~/base/page-layout/data";
 import type { IProjectItem } from "~/widgets/section-items/projects-item/types";
+import type { INewsItem } from "~/widgets/section-items/news-item/types";
 import type { TMeta } from "~/base/page-content/types";
 
 const props = defineProps<IProps>();
@@ -62,7 +64,7 @@ const section = sectionsData[props.section] as ISection;
 const { data: posts } = await useAsyncData(
   `${props.section}-data`,
   () =>
-    useApiClient<{ data: Array<IProjectItem>; meta: TMeta }>(
+    useApiClient<{ data: Array<IProjectItem | INewsItem>; meta: TMeta }>(
       section.initialReqUrl,
       {
         method: "get",
@@ -74,6 +76,9 @@ const { data: posts } = await useAsyncData(
 
 <style scoped lang="scss">
 .base-page-layout {
+  @media (max-width: 768px) {
+    @include container($y: 16px);
+  }
   &__header {
     width: 100%;
     display: flex;
@@ -94,6 +99,11 @@ const { data: posts } = await useAsyncData(
         @include txt($font-size: 48px, $font-weight: 700);
 
         margin-bottom: 20px;
+        text-align: center;
+
+        @media (max-width: 768px) {
+          @include txt($font-size: 40px, $font-weight: 700);
+        }
       }
 
       &__benefits {

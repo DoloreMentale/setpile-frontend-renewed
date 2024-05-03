@@ -20,9 +20,7 @@ export const sectionsData: { [key: string]: ISection } = {
       "Fast & easy communication with prospect partners",
     ],
     actions: [
-      { text: "Create free account", type: "primary", link: "" },
-      { text: "Post a project", type: "default", link: "" },
-      { text: "Post a resume", type: "default", link: "" },
+      { text: "Create free account", type: "primary", link: "" }
     ],
     initialReqUrl:
       "/v3/jobs?type=project&page=1&sort_field=created_at&per_page=20&sort_direction=desc&search_longitude=30.2618&search_latitude=59.8983",

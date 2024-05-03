@@ -4,7 +4,14 @@
 
     <slot />
 
-    <WidgetFooter v-if="!hideFooter" class="main-footer" />
+    <WidgetFooter v-if="!hideFooter" />
+
+    <Component
+      :is="selectedModal"
+      v-if="selectedModal"
+      :open="isOpen"
+      @cancel="setModalState(undefined, false)"
+    />
   </main>
 </template>
 
@@ -12,6 +19,8 @@
 import { useRoute } from "vue-router";
 
 const route = useRoute();
+const { isOpen, selectedModal, setModalState } = useModals();
+
 const hideFooter = route.path === "/";
 </script>
 

@@ -93,6 +93,7 @@ const topics = ref([
       padding: 24px;
       border-radius: 12px;
       background-color: $white;
+      border: 1px solid $white;
       min-width: 292px;
 
       &--active {
@@ -102,7 +103,17 @@ const topics = ref([
         padding: 24px;
         border-radius: 12px;
         background-color: $white;
+        border: 1px solid $white;
         min-width: 292px;
+
+        &:hover {
+          border: 1px solid $blue;
+
+          .dashboard__card__icon {
+            display: block;
+            color: $blue;
+          }
+        }
       }
 
       &:hover {

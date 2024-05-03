@@ -27,15 +27,34 @@ const componentToRender = computed(() => {
 
 <style scoped lang="scss">
 .page-content {
-  @include container($x: 56px);
+  @include container($x: 40px);
+
+  @media (max-width: 768px) {
+    @include container($x: 24px, $y: 16px);
+  }
 
   background-color: $gray;
 
   &__list {
-    &--projects {
+    &--projects, &--marketplace {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 40px;
+
+      @media (max-width: 1228px) {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 24px;
+      }
+    }
+
+    &--live-inventories {
+      
+    }
+
+    &--news {
+      display: flex;
+      flex-direction: column;
+      row-gap: 40px;
     }
 
     &__item {
