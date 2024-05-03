@@ -2,7 +2,9 @@
   <div class="footer">
     <div class="footer__main">
       <div class="footer__firstBlock">
-        <img src="/logo.svg" alt="logo" />
+        <NuxtLink :to="isHomePage ? '/dashboard' : '/'">
+          <img src="/logo.svg" alt="logo" />
+        </NuxtLink>
         <div>Setpile CORP</div>
         <div>1854 NW 124th Way, Coral Springs, FL 33071 USA</div>
       </div>
@@ -28,6 +30,10 @@
   </div>
 </template>
 
+<script setup lang="ts">
+const isHomePage = computed(() => useRoute().path === "/");
+</script>
+
 <style scoped lang="scss">
 .footer {
   @include container($x: 16px);
@@ -37,7 +43,6 @@
 
   margin-top: auto;
   margin-bottom: 16px;
-  position: fixed;
   bottom: 0;
   width: 100%;
 
