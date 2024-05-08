@@ -1,5 +1,6 @@
 <template>
-  <UIModal>
+  <UIModal width="auto">
+    <WidgetPaymentPromoHeader />
     <WidgetPayment
       isStripeButton="true"
     />

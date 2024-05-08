@@ -70,3 +70,7 @@ textarea:not([rows]) {
   color: $white !important;
   padding: 20px 0;
 }
+
+.ant-input-group .ant-input-group-addon {
+  background-color: #ffffff !important;
+}
