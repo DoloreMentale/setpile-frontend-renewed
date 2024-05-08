@@ -5,14 +5,14 @@
 
       <div class="base-page-layout__header__content">
         <h1 class="base-page-layout__header__content__title">
-          {{ section.title }}
+          {{ selectedSection.title }}
         </h1>
 
-        <WidgetSearch :inputs="section.search" />
+        <WidgetSearch :inputs="selectedSection.search" />
 
         <div class="base-page-layout__header__content__benefits">
           <div
-            v-for="(benefit, benefitIdx) in section.benefits"
+            v-for="(benefit, benefitIdx) in selectedSection.benefits"
             :key="benefitIdx"
             class="base-page-layout__header__content__benefits__item"
           >
@@ -28,7 +28,7 @@
 
         <div class="base-page-layout__header__content__actions">
           <AButton
-            v-for="(action, actionIdx) in section.actions"
+            v-for="(action, actionIdx) in selectedSection.actions"
             :key="actionIdx"
             :type="action.type"
             class="base-page-layout__header__content__actions__item"
@@ -43,36 +43,38 @@
 
     <BasePageContent
       :section="props.section"
-      :items="posts?.data"
-      :meta="posts?.meta"
+      :items="data?.data"
+      :meta="data?.meta"
     />
   </div>
   <!-- <a-pagination v-model:current="props.currentPage" :total="props.total" /> -->
 </template>
 
 <script setup lang="ts">
-import type { IProps, ISection } from "~/base/page-layout/types";
+import type { IProps } from "~/base/page-layout/types";
 import { sectionsData } from "~/base/page-layout/data";
 import type { IProjectItem } from "~/widgets/section-items/projects-item/types";
 import type { INewsItem } from "~/widgets/section-items/news-item/types";
-import type { ILiveInventories } from "~/widgets/section-items/live-inventories-item/types";
+import type { ILiveInventoriesItem } from "~/widgets/section-items/live-inventories-item/types";
 import type { TMeta } from "~/base/page-content/types";
 
 const props = defineProps<IProps>();
 
-const section = sectionsData[props.section] as ISection;
+const selectedSection = computed(() => sectionsData[props.section]);
 
-const { data: posts } = await useAsyncData(
+const { data } = await useAsyncData(
   `${props.section}-data`,
   () =>
-    useApiClient<{ data: Array<IProjectItem | INewsItem | ILiveInventories>; meta: TMeta }>(
-      section.initialReqUrl,
-      {
-        method: "get",
-      },
-    ),
+    useApiClient<{
+      data: Array<IProjectItem | INewsItem | ILiveInventoriesItem>;
+      meta: TMeta;
+    }>(selectedSection.value.initialReqUrl, {
+      method: "get",
+    }),
   { default: () => {} },
 );
+
+console.log(data);
 </script>
 
 <style scoped lang="scss">
