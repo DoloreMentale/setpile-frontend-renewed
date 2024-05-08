@@ -1,18 +1,3 @@
-export interface ILiveInventoriesItem {
-  availability_in_stores: AvailabilityInStores[];
-  category_path: CategoryPath[];
-  closest_store_distance_from_user: number;
-  description: string;
-  id: number;
-  images: Images[];
-  manufacturer_id: number;
-  manufacturer_part_number: string;
-  minimum_price_in_stores: number;
-  name: string;
-  short_description: number;
-  slug: string;
-}
-
 export interface AvailabilityInStores {
   amount: number;
   city: string;
@@ -37,6 +22,21 @@ export interface CategoryPath {
 
 export interface Images {
   image_path: string;
+}
+
+export interface ILiveInventoriesItem {
+  availability_in_stores: AvailabilityInStores[];
+  category_path: CategoryPath[];
+  closest_store_distance_from_user: number;
+  description: string;
+  id: number;
+  images: Images[];
+  manufacturer_id: number;
+  manufacturer_part_number: string;
+  minimum_price_in_stores: number;
+  name: string;
+  short_description: number;
+  slug: string;
 }
 
 export interface IProps {

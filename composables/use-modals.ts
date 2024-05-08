@@ -1,7 +1,13 @@
 import type { Component } from "vue";
 
 import { storeToRefs } from "pinia";
-import { LoginModal, RegisterModal, SignUpModal, ForgotPasswordModal } from "~/widgets";
+import {
+  LoginModal,
+  RegisterModal,
+  SignUpModal,
+  ForgotPasswordModal,
+  TariffsModal,
+} from "~/widgets";
 
 export const useModals = () => {
   const modalsStore = useModalsStore();
@@ -13,7 +19,8 @@ export const useModals = () => {
     login: LoginModal,
     register: RegisterModal,
     "sign-up": SignUpModal,
-    "forgot-password": ForgotPasswordModal
+    "forgot-password": ForgotPasswordModal,
+    tariffs: TariffsModal,
   };
 
   const selectedModal = computed(() => {
