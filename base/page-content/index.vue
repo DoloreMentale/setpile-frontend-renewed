@@ -48,7 +48,7 @@ const componentToRender = computed(() => {
     }
 
     &--live-inventories {
-      
+      display: grid;
     }
 
     &--news {

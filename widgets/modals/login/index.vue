@@ -20,13 +20,9 @@
             required
             autocomplete="nope"
           />
-          <AButton class="login__links" @click="openModal"
-            >Forgot password</AButton
-          >
-          <WidgetForgotPassword
-            :forgot-pass-modal-visible="forgotPassModalVisible"
-            :close-forgot-pass="closeModal"
-          />
+          <AButton class="login__links" @click="setModalState('tariffs', true)">
+            Forgot password
+          </AButton>
         </a-col>
         <a-col :span="24">
           <a-button size="large" type="primary" block html-type="submit"
@@ -60,46 +56,17 @@
       </a-row>
       <div class="login__subtitle">
         Don't have a Setpile account?
-        <AButton class="login__links" @click="openSignUpModal">Sign up</AButton>
+        <AButton class="login__links" @click="setModalState('sign-up', true)">Sign up</AButton>
       </div>
     </form>
   </UIModal>
 </template>
 
 <script setup lang="ts">
+const { setModalState } = useModals();
 import { ref } from "vue";
-
-const props = defineProps<{
-  modalVisible: boolean;
-}>();
-
-const forgotPassModalVisible = ref(false);
-const modalSignUpVisible = ref(false);
-
-const openModal = () => {
-  forgotPassModalVisible.value = true;
-};
-
-const closeModal = () => {
-  forgotPassModalVisible.value = false;
-};
-
-const openSignUpModal = () => {
-  modalSignUpVisible.value = true;
-};
-
-const closeSignUpModal = () => {
-  modalSignUpVisible.value = false;
-};
-
-const { emit } = defineEmits();
-
-const loading = ref(false);
 const email = ref("");
 const password = ref("");
-const handleClose = () => {
-  emit("close");
-};
 </script>
 
 <style scoped lang="scss">

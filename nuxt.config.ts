@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     [
       "@nuxtjs/google-fonts",
-      { families: { Roboto: { wght: [400, 600, 700] } } },
+      { families: { Roboto: { wght: [400, 500, 600, 700] } } },
     ],
   ],
   css: ["~/assets/css/index.scss"],

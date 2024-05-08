@@ -128,7 +128,7 @@
         </a-col>
       </a-row>
       <div class="signup__subtitle">
-        Already have an account? <AButton class="signup__links">Log In</AButton>
+        Already have an account? <AButton class="signup__links" @click="setModalState('login', true)">Log In</AButton>
       </div>
       <div></div>
     </form>
@@ -136,13 +136,7 @@
 </template>
 
 <script setup lang="ts">
-const { props } = defineProps<{
-  modalSignUpVisible: boolean;
-}>();
-
-const handleSignUpClose = () => {
-  emit("close-sign-up");
-};
+const { setModalState } = useModals();
 </script>
 
 <style scoped lang="scss">
