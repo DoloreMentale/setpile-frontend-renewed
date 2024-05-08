@@ -1,7 +1,9 @@
 <template>
   <div class="project-item">
     <div class="project-item__header">
-      <div v-if="props.item.title" class="project-item__header__title">{{ props.item.title }}</div>
+      <div v-if="props.item.title" class="project-item__header__title">
+        {{ props.item.title }}
+      </div>
 
       <div v-if="location" class="project-item__header__location">
         <EnvironmentOutlined class="project-item__header__location__icon" />
@@ -11,7 +13,8 @@
       <div class="project-item__header__params">
         <div class="project-item__header__params__item">
           <div class="project-item__header__params__item__value">
-            ${{ props.item.week_rate_from }} - ${{ props.item.week_rate_to }} {{ props.item.payment_rate_type }}
+            ${{ props.item.week_rate_from }} - ${{ props.item.week_rate_to }}
+            {{ props.item.payment_rate_type }}
           </div>
           <div class="project-item__header__params__item__label">Price</div>
         </div>
@@ -19,17 +22,23 @@
           <div class="project-item__header__params__item__value">
             {{ props.item.experience_level }}
           </div>
-          <div class="project-item__header__params__item__label">Experience lavel</div>
+          <div class="project-item__header__params__item__label">
+            Experience lavel
+          </div>
         </div>
         <div class="project-item__header__params__item">
           <div class="project-item__header__params__item__value">
             {{ props.item.employment_type }}
           </div>
-          <div class="project-item__header__params__item__label">Employer type</div>
+          <div class="project-item__header__params__item__label">
+            Employer type
+          </div>
         </div>
       </div>
 
-      <div v-if="props.item.description" class="project-item__header__descr">{{ props.item.description }}</div>
+      <div v-if="props.item.description" class="project-item__header__descr">
+        {{ props.item.description }}
+      </div>
 
       <div v-if="props.item.tags" class="project-item__header__tags">
         <div v-for="tag in props.item.tags.default_tags" :key="tag.id">
@@ -43,36 +52,46 @@
       <div class="project-item__header__buttons">
         <div v-if="props.item.is_external" v-html="noindexBtn" />
         <template v-else-if="props.item.can_edit">
-          <AButton v-if="props.item.total_responses_count > 0" size="large" type="primary">
+          <AButton
+            v-if="props.item.total_responses_count > 0"
+            size="large"
+            type="primary"
+          >
             See {{ props.item.total_responses_count }}
-            <template v-if="props.item.total_responses_count === 1">response</template>
+            <template v-if="props.item.total_responses_count === 1"
+              >response</template
+            >
             <template v-else>responses</template>
           </AButton>
-          <AButton v-else size="large" disabled>
-            0 responses
-          </AButton>
-          <div v-if="props.item.unread_responses_count > 0" class="ant-badge ant-badge-error">
+          <AButton v-else size="large" disabled> 0 responses </AButton>
+          <div
+            v-if="props.item.unread_responses_count > 0"
+            class="ant-badge ant-badge-error"
+          >
             New +{{ props.item.unread_responses_count }}
           </div>
         </template>
         <template v-else>
           <AButton v-if="props.item.user_response" size="large" type="success">
-            <Icon :icon="'check'"/>
+            <Icon :icon="'check'" />
             Answered
           </AButton>
-          <AButton v-else @click.prevent="offerJob()" size="large">
+          <AButton v-else size="large" @click.prevent="offerJob()">
             <MessageOutlined />
             Apply for a job
           </AButton>
         </template>
       </div>
 
-      <div v-if="props.item.created_at && props.item.updated_at" class="project-item__header__date">
+      <div
+        v-if="props.item.created_at && props.item.updated_at"
+        class="project-item__header__date"
+      >
         <template v-if="props.item.created_at === props.item.updated_at">
-            {{ dateTransform(props.item.created_at) }}
+          {{ dateTransform(props.item.created_at) }}
         </template>
         <template v-else>
-            {{ dateTransform(props.item.updated_at) }}
+          {{ dateTransform(props.item.updated_at) }}
         </template>
       </div>
     </div>
@@ -81,7 +100,7 @@
 
 <script setup lang="ts">
 import type { IProps } from "~/widgets/section-items/projects-item/types";
-import { useDateTransform } from '~/composables/use-date-transform';
+import { useDateTransform } from "~/composables/use-date-transform";
 
 const { dateTransform } = useDateTransform(new Date());
 
@@ -136,7 +155,12 @@ const location = computed(
         margin: 0 40px 24px 0;
 
         &__value {
-          @include txt($font-size: 24px, $font-weight: 500, $color: $full-black, $opacity: 0.85);
+          @include txt(
+            $font-size: 24px,
+            $font-weight: 500,
+            $color: $full-black,
+            $opacity: 0.85
+          );
         }
 
         &__label {

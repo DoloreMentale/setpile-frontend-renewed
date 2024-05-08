@@ -7,7 +7,8 @@
 
 <script setup lang="ts">
 import type { IProps } from "~/widgets/section-items/live-inventories-item/types";
+
+const props = defineProps<IProps>();
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>
