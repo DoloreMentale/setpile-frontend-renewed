@@ -39,7 +39,7 @@
           <AButton
             style="width: 100%"
             class="sign-modal__button"
-            @click="continueWithEmail"
+            @click="setModalState('sign-up', true)"
           >
             <img
               class="sign-modal__button-icon"
@@ -51,51 +51,21 @@
       </div>
       <div class="sign-modal__login">
         Already have an account?
-        <AButton class="sign-modal__btn-log" @click="openModal">Log In</AButton>
+        <AButton class="sign-modal__btn-log" @click="setModalState('login', true)">Log In</AButton>
       </div>
-      <WidgetLogIn :modal-visible="modalVisible" @close="closeModal" />
       <div class="sign-modal__subtitle">
         By continuing, you agree to Setpile<br />
-        <b
-          ><NuxtLink class="sign-modal__links" to="/terms-service"
-            >Terms of Service</NuxtLink
-          ></b
-        >
-        and
-        <b
-          ><NuxtLink class="sign-modal__links" to="/privacy"
-            >Privacy Policy.</NuxtLink
-          ></b
-        >
+        <b><NuxtLink class="sign-modal__links" to="/terms-service">
+            Terms of Service</NuxtLink></b>and
+        <b><NuxtLink class="sign-modal__links" to="/privacy"
+            >Privacy Policy.</NuxtLink></b>
       </div>
     </div>
   </UIModal>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-
-const { props } = defineProps<{
-  signInModalVisible: boolean;
-}>();
-
-const modalVisible = ref(false);
-
-const openModal = () => {
-  modalVisible.value = true;
-  signInModalVisible.value = false;
-};
-
-const closeModal = () => {
-  modalVisible.value = false;
-};
-
-const { emit } = defineEmits();
-
-const loading = ref(false);
-const handleSignInClose = () => {
-  emit("sign-in-close");
-};
+const { setModalState } = useModals();
 </script>
 
 <style scoped lang="scss">

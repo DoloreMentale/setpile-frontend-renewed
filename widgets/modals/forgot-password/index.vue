@@ -28,18 +28,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-
-const props = defineProps<{
-  forgotPassModalVisible: boolean;
-}>();
-
-const { emit } = defineEmits();
-const loading = ref(false);
-
-const handleForgotPassClose = () => {
-  emit('close-forgot-pass');
-};
 </script>
 
 <style scoped lang="scss">

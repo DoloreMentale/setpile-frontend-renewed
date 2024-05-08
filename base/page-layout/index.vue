@@ -55,6 +55,7 @@ import type { IProps, ISection } from "~/base/page-layout/types";
 import { sectionsData } from "~/base/page-layout/data";
 import type { IProjectItem } from "~/widgets/section-items/projects-item/types";
 import type { INewsItem } from "~/widgets/section-items/news-item/types";
+import type { ILiveInventories } from "~/widgets/section-items/live-inventories-item/types";
 import type { TMeta } from "~/base/page-content/types";
 
 const props = defineProps<IProps>();
@@ -64,7 +65,7 @@ const section = sectionsData[props.section] as ISection;
 const { data: posts } = await useAsyncData(
   `${props.section}-data`,
   () =>
-    useApiClient<{ data: Array<IProjectItem | INewsItem>; meta: TMeta }>(
+    useApiClient<{ data: Array<IProjectItem | INewsItem | ILiveInventories>; meta: TMeta }>(
       section.initialReqUrl,
       {
         method: "get",

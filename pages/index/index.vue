@@ -257,7 +257,7 @@
           />
         </div>
       </div>
-      <!-- <Tariffs :hideStripeButtons="true" :hideSignUpButtons="false" /> -->
+      <WidgetPayment isDefaultButton="true" />
     </div>
 
     <div class="general__footer">
