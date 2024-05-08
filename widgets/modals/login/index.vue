@@ -56,15 +56,17 @@
       </a-row>
       <div class="login__subtitle">
         Don't have a Setpile account?
-        <AButton class="login__links" @click="setModalState('sign-up', true)">Sign up</AButton>
+        <AButton class="login__links" @click="setModalState('sign-up', true)"
+          >Sign up</AButton
+        >
       </div>
     </form>
   </UIModal>
 </template>
 
 <script setup lang="ts">
-const { setModalState } = useModals();
 import { ref } from "vue";
+const { setModalState } = useModals();
 const email = ref("");
 const password = ref("");
 </script>
