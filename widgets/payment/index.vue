@@ -181,6 +181,10 @@ const isMonthlyTariff = true;
         border: none;
         border-radius: 12px;
         width: 100%;
+
+        &:hover {
+          color: $white;
+        }
       }
     }
 

@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="payment-header__input" v-show="inputVisible || codeValid">
-      <a-input size="large" placeholder="Promo code (optional)" v-model="code">
+      <AInput size="large" placeholder="Promo code (optional)" v-model="code">
         <template v-slot:addonAfter>
           <template v-if="codeValid">
             <CheckOutlined />
@@ -23,7 +23,7 @@
             <AButton class="payment-header__input__button" @click="validatePromocode()">Apply</AButton>
           </template>
         </template>
-      </a-input>
+      </AInput>
     </div>
     <div v-if="month_discount">
       <div class="payment-header__input__next" v-if="codeValid">Next <del>${{ basic_price }}</del> ${{ promotion_price }} a month</div>
@@ -37,15 +37,18 @@
 </template>
 
 <script setup lang="ts">
+const inputVisible = ref(false);
+
+const toggleInputVisibility = () => {
+  inputVisible.value = !inputVisible.value;
+};
 </script>
 
 <style scoped lang="scss">
 .payment-header {
   text-align: center;
-  // display: flex;
-  // justify-content: center;
   max-width: 736px;
-  margin: 40px auto 0;
+  margin: 100px auto 0;
 
   &__container {
     display: flex;
@@ -54,7 +57,7 @@
     margin: 0 auto;
 
     @media(max-width: 1220px) {
-        width: auto;
+      width: auto;
     }
 
     &__tag {
@@ -74,10 +77,12 @@
       &__top {
         transform: rotate(-6.017deg);
         right: -71px;
+        top: -60px;
       }
 
       &__bottom {
         transform: rotate(-7.958deg);
+        top: 60px;
       }
     }
 
@@ -85,10 +90,12 @@
       &__top {
         transform: rotate(6.02deg);
         left: -71px;
+        top: -60px;
       }
 
       &__bottom {
         transform: rotate(7.96deg);
+        top: 60px;
       }
     }
 

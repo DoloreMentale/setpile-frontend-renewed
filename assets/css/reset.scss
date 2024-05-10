@@ -70,3 +70,66 @@ textarea:not([rows]) {
   color: $white !important;
   padding: 20px 0;
 }
+
+.ant-input-group .ant-input-group-addon {
+  background-color: #ffffff !important;
+}
+
+.ant-tabs {
+  &-bar {
+      @media (min-width: 768px) {
+          margin: 0 !important;
+          border: 0 !important;
+      }
+  }
+
+  &-content {
+      @media (min-width: 768px) {
+          display: grid !important;
+          grid-gap: 24px !important;
+          grid-template-columns: 1fr 1fr !important;
+      }
+
+      &:before, &:after {
+          @media (min-width: 768px) {
+              display: none !important;
+          }
+      }
+  }
+
+  &-nav {
+    @media (min-width: 768px) {
+      display: none !important;
+    }
+  }
+
+  &-tab {
+      flex-grow: 1 !important;
+      z-index: 200 !important;
+      width: 50% !important;
+      margin: 0 !important;
+      text-align: center !important;
+
+      @media (min-width: 768px) {
+          display: none !important;
+      }
+  }
+
+  &-tabpane {
+      @media (min-width: 768px) {
+          height: 100% !important;
+          opacity: 1 !important;
+          pointer-events: initial !important;
+      }
+
+      &::after {
+          &:focus-visible {
+              pointer-events: none !important;
+          }
+      }
+  }
+
+  &-ink-bar {
+      width: 50% !important;
+  }
+}
