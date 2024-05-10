@@ -49,6 +49,9 @@ const componentToRender = computed(() => {
 
     &--live-inventories {
       display: grid;
+      border: 1px solid $neutral-5;
+      border-radius: 12px;
+      overflow: hidden;
     }
 
     &--news {
