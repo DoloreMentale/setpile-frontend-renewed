@@ -12,7 +12,6 @@ export function useApiClient<
 
   return $fetch<T, R>(request, {
     ...options,
-    mode: "no-cors",
     headers: {
       ...options?.headers,
       ...cookies,

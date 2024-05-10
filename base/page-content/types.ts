@@ -17,7 +17,9 @@ export type TMeta = {
 
 export interface IProps {
   section: TSection;
-  items: Array<IProjectItem | INewsItem | IMarketItem | ILiveInventoriesItem> | undefined;
+  items:
+    | Array<IProjectItem | INewsItem | IMarketItem | ILiveInventoriesItem>
+    | undefined;
   meta: TMeta | undefined;
 }
 
