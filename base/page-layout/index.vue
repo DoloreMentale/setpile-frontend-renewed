@@ -46,8 +46,11 @@
       :items="posts?.data"
       :meta="posts?.meta"
     />
+
+    <!-- <WidgetUnloginedBanner :isBsicUser="true" /> -->
+    <!-- <WidgetUnloginedBanner :isUnregistrUser="true" /> -->
   </div>
-  <!-- <a-pagination v-model:current="props.currentPage" :total="props.total" /> -->
+
 </template>
 
 <script setup lang="ts">
