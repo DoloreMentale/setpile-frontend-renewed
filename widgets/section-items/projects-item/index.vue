@@ -73,10 +73,10 @@
         </template>
         <template v-else>
           <AButton v-if="props.item.user_response" size="large" type="success">
-            <Icon :icon="'check'" />
+            <CheckOutlined />
             Answered
           </AButton>
-          <AButton v-else size="large" @click.prevent="offerJob()">
+          <AButton v-else size="large" @click="setModalState('send-offer', true)">
             <MessageOutlined />
             Apply for a job
           </AButton>
@@ -102,6 +102,7 @@
 import type { IProps } from "~/widgets/section-items/projects-item/types";
 import { useDateTransform } from "~/composables/use-date-transform";
 
+const { setModalState } = useModals();
 const { dateTransform } = useDateTransform(new Date());
 
 const props = defineProps<IProps>();

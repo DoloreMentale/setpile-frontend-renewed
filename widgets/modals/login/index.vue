@@ -20,7 +20,7 @@
             required
             autocomplete="nope"
           />
-          <AButton class="login__links" @click="setModalState('tariffs', true)">
+          <AButton class="login__links" @click="setModalState('verify-email', true)">
             Forgot password
           </AButton>
         </a-col>
