@@ -50,34 +50,18 @@
     <!-- <WidgetUnloginedBanner :isBsicUser="true" /> -->
     <!-- <WidgetUnloginedBanner :isUnregistrUser="true" /> -->
   </div>
-
 </template>
 
 <script setup lang="ts">
 import type { IProps } from "~/base/page-layout/types";
 import { sectionsData } from "~/base/page-layout/data";
-import type { IProjectItem } from "~/widgets/section-items/projects-item/types";
-import type { INewsItem } from "~/widgets/section-items/news-item/types";
-import type { ILiveInventoriesItem } from "~/widgets/section-items/live-inventories-item/types";
-import type { TMeta } from "~/base/page-content/types";
+import { useApi } from "~/composables/use-api";
 
 const props = defineProps<IProps>();
 
 const selectedSection = computed(() => sectionsData[props.section]);
 
-const { data } = await useAsyncData(
-  `${props.section}-data`,
-  () =>
-    useApiClient<{
-      data: Array<IProjectItem | INewsItem | ILiveInventoriesItem>;
-      meta: TMeta;
-    }>(selectedSection.value.initialReqUrl, {
-      method: "get",
-    }),
-  { default: () => {} },
-);
-
-console.log(data);
+const { data } = await useApi[selectedSection.value.initialReq](props.section);
 </script>
 
 <style scoped lang="scss">

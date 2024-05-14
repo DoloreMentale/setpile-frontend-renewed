@@ -2,14 +2,12 @@
   <div class="sort">
     <ADropdown v-model="sortShow">
       <a class="sort__current" @click.prevent="sortShow = !sortShow">
-        {{ currentSort.label }} <DownOutlined />
+        {{ currentSort?.label }}
+        <DownOutlined />
       </a>
       <template #overlay>
         <AMenu>
-          <AMenuItem
-              v-for="(item, index) in sortList"
-              :key="index"
-          >
+          <AMenuItem v-for="(item, index) in sortList" :key="index">
             <a @click.prevent="selectSort(item)">
               {{ item.label }}
             </a>
@@ -22,12 +20,11 @@
 
 <script setup lang="ts">
 import type { SortOption } from "~/base/page-sort/types";
-import { projectSortOptions, liveInventoriesSortOptions, marketplaceSortOptions } from "~/base/page-sort/data";
 const props = defineProps({
   sortList: {
     type: Array as () => SortOption[],
-    required: true
-  }
+    required: true,
+  },
 });
 
 const sortShow = ref(false);

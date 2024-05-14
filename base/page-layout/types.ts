@@ -17,5 +17,5 @@ export interface ISection {
   search: Array<ISearchInput>;
   benefits: Array<string>;
   actions: Array<IActionBtn>;
-  initialReqUrl: string;
+  initialReq: "PROJECTS" | "LIVE_INVENTORIES" | "MARKETPLACE" | "NEWS";
 }

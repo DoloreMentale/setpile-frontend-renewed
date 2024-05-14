@@ -1,9 +1,11 @@
 <template>
   <div class="page-content">
     <div class="page-content__sort">
-      <BasePageSort :sortList="sortOptions" />
+      <BasePageSort :sort-list="sortOptions" />
     </div>
-    <div :class="['page-content__list', `page-content__list--${props.section}`]">
+    <div
+      :class="['page-content__list', `page-content__list--${props.section}`]"
+    >
       <Component
         :is="componentToRender"
         v-for="item in props.items"
@@ -14,9 +16,9 @@
     </div>
 
     <a-pagination
-      class="page-content__pagination"
       v-model:current="props.meta.currentPage"
       v-model:pageSize="pageSize"
+      class="page-content__pagination"
       :total="props.meta.total"
       show-size-changer
       show-less-items
@@ -25,9 +27,13 @@
 </template>
 
 <script setup lang="ts">
-import type { IProps, TMeta } from "~/base/page-content/types";
+import type { IProps } from "~/base/page-content/types";
 import { itemComponents } from "~/base/page-content/data";
-import { projectSortOptions, liveInventoriesSortOptions, marketplaceSortOptions } from "~/base/page-sort/data";
+import {
+  projectSortOptions,
+  liveInventoriesSortOptions,
+  marketplaceSortOptions,
+} from "~/base/page-sort/data";
 
 const props = defineProps<IProps>();
 
@@ -69,10 +75,11 @@ const sortOptions = computed(() => {
     margin: 40px 0;
 
     @media (max-width: 768px) {
-      margin: 24px 0 32px
+      margin: 24px 0 32px;
     }
 
-    &--projects, &--marketplace {
+    &--projects,
+    &--marketplace {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 40px;

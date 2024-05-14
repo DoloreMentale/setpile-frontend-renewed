@@ -19,11 +19,8 @@ export const sectionsData: { [key: string]: ISection } = {
       "Over 11 active projects",
       "Fast & easy communication with prospect partners",
     ],
-    actions: [
-      { text: "Create free account", type: "primary", link: "" }
-    ],
-    initialReqUrl:
-      "/v3/jobs?type=project&page=1&sort_field=created_at&per_page=20&sort_direction=desc&search_longitude=30.2618&search_latitude=59.8983",
+    actions: [{ text: "Create free account", type: "primary", link: "" }],
+    initialReq: "PROJECTS",
   },
   "live-inventories": {
     title: "See what is currently available",
@@ -45,8 +42,7 @@ export const sectionsData: { [key: string]: ISection } = {
       "Over 1249 products",
     ],
     actions: [{ text: "Create free account", type: "primary", link: "" }],
-    initialReqUrl:
-      "/v3/products?page=1&sort_field=distance_from_user&per_page=20&sort_direction=desc&search_longitude=30.2618&search_latitude=59.8983",
+    initialReq: "LIVE_INVENTORIES",
   },
   marketplace: {
     title: "Sell or Buy excess inventory",
@@ -68,8 +64,7 @@ export const sectionsData: { [key: string]: ISection } = {
       "Exclusive deals",
     ],
     actions: [{ text: "Sell your products", type: "primary", link: "" }],
-    initialReqUrl:
-      "/v4/listings?page=1&sort_field=updated_at&per_page=20&sort_direction=desc&post_type=listing&search_longitude=30.2618&search_latitude=59.8983",
+    initialReq: "MARKETPLACE",
   },
   news: {
     title: "Read latest industry news",
@@ -86,7 +81,6 @@ export const sectionsData: { [key: string]: ISection } = {
       "Get weekly news digest",
     ],
     actions: [{ text: "Create free account", type: "primary", link: "" }],
-    initialReqUrl:
-      "/v3/news/posts?page=1&sort_direction=desc&sort_field=created_at",
+    initialReq: "NEWS",
   },
 };

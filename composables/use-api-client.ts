@@ -1,6 +1,6 @@
 import type { NitroFetchRequest } from "nitropack";
 
-export function useApiClient<
+function apiClient<
   T = unknown,
   R extends NitroFetchRequest = NitroFetchRequest,
 >(
@@ -19,4 +19,21 @@ export function useApiClient<
     retry: false,
     baseURL: runtimeConfig.public.apiBase as string,
   });
+}
+
+export default function useApiClient<T>(
+  method: "get" | "post" = "get",
+  url: string,
+  key: string,
+) {
+  return useAsyncData(
+    key,
+    () =>
+      apiClient<T>(url, {
+        method,
+      }),
+    {
+      default: () => {},
+    },
+  );
 }

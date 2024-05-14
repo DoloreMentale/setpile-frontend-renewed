@@ -45,7 +45,7 @@ export interface IMarketItem {
 export type Identifiable = {
   id: number;
   name: string;
-}
+};
 
 export interface Category extends Identifiable {
   slug: string;
