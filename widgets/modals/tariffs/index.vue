@@ -7,10 +7,6 @@
   </UIModal>
 </template>
 
-<script setup lang="ts">
-const { setModalState } = useModals();
-import { ref } from "vue";
-</script>
+<script setup lang="ts"></script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

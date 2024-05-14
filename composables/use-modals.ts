@@ -7,6 +7,9 @@ import {
   SignUpModal,
   ForgotPasswordModal,
   TariffsModal,
+  SendOfferModal,
+  ResetPasswordModal,
+  VerifyEmailModal
 } from "~/widgets";
 
 export const useModals = () => {
@@ -21,6 +24,9 @@ export const useModals = () => {
     "sign-up": SignUpModal,
     "forgot-password": ForgotPasswordModal,
     tariffs: TariffsModal,
+    "send-offer": SendOfferModal,
+    "reset-password": ResetPasswordModal,
+    "verify-email": VerifyEmailModal
   };
 
   const selectedModal = computed(() => {
