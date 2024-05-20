@@ -42,3 +42,19 @@ export interface ILiveInventoriesItem {
 export interface IProps {
   item: ILiveInventoriesItem;
 }
+
+export interface LiveInventoriesCategories extends ChildrenPodCategories {
+  children: ChildrenCategories[];
+}
+
+export interface ChildrenCategories {
+  children: ChildrenPodCategories[];
+}
+
+export interface ChildrenPodCategories {
+  id: number;
+  slug: string;
+  name: string;
+  image_path: string;
+  total_products_count: number;
+}

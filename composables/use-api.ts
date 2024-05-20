@@ -1,9 +1,9 @@
 import useApiClient from "~/composables/use-api-client";
 import type { IProjectItem } from "~/widgets/section-items/projects-item/types";
 import type { INewsItem } from "~/widgets/section-items/news-item/types";
-import type { ILiveInventoriesItem } from "~/widgets/section-items/live-inventories-item/types";
+import type { ILiveInventoriesItem, LiveInventoriesCategories } from "~/widgets/section-items/live-inventories-item/types";
 import type { TMeta } from "~/base/page-content/types";
-import type { IMarketItem } from "~/widgets/section-items/marketplace-item/types";
+import type { IMarketItem, MarketCategories } from "~/widgets/section-items/marketplace-item/types";
 
 export const useApi = {
   PROJECTS: (key: string) =>
@@ -40,6 +40,18 @@ export const useApi = {
     }>(
       "get",
       "/v3/news/posts?page=1&sort_direction=desc&sort_field=created_at",
+      key,
+    ),
+  PRODUCT_CATEGORIES: (key: string) =>
+    useApiClient<{ data: LiveInventoriesCategories }>(
+      "get",
+      "/v3/products/categories",
+      key,
+    ),
+  MARKETPLACE_CATEGORIES: (key: string) =>
+    useApiClient<{ data: MarketCategories }>(
+      "get",
+      "/v4/listings/categories",
       key,
     ),
 };

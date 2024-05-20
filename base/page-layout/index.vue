@@ -41,6 +41,8 @@
       <img class="base-page-layout__header__img" />
     </div>
 
+    <BasePageCategories :items="data?.data" />
+
     <BasePageContent
       :section="props.section"
       :items="data?.data"
