@@ -47,6 +47,5 @@ const selectSort = (sortOption: SortOption) => {
 .ant-dropdown-link {
   @include txt($font-size: 16px, $color: $black, $opacity: 0.85);
   cursor: pointer;
-  // display: flex;
 }
 </style>

@@ -74,3 +74,21 @@ export interface VolumePricing {
 export interface IProps {
   item: IMarketItem;
 }
+
+export interface MarketCategories extends ChildrenPodCategories {
+  children: ChildrenCategories[];
+}
+
+export interface ChildrenCategories {
+  children: ChildrenPodCategories[];
+}
+
+export interface ChildrenPodCategories {
+  id: number;
+  slug: string;
+  name: string;
+  seo_meta_title: string;
+  seo_meta_description: string;
+  image_path: string;
+  total_products_count: number;
+}
