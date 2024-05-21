@@ -4,6 +4,7 @@ import type { INewsItem } from "~/widgets/section-items/news-item/types";
 import type { ILiveInventoriesItem, LiveInventoriesCategories } from "~/widgets/section-items/live-inventories-item/types";
 import type { TMeta } from "~/base/page-content/types";
 import type { IMarketItem, MarketCategories } from "~/widgets/section-items/marketplace-item/types";
+import type { User } from "~/shared/types";
 
 export const useApi = {
   PROJECTS: (key: string) =>
@@ -52,6 +53,12 @@ export const useApi = {
     useApiClient<{ data: MarketCategories }>(
       "get",
       "/v4/listings/categories",
+      key,
+    ),
+  USER: (key: string) =>
+    useApiClient<{ data: User }>(
+      "get",
+      "/v4/auth/user",
       key,
     ),
 };

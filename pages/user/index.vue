@@ -135,7 +135,10 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useApi } from "~/composables/use-api";
 const user = ref(Object);
+
+const { data } = useApi.USER('');
 
 const isActiveStatus = () => {
   return user && user.subscription && user.subscription.status === 'active';
